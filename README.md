@@ -24,7 +24,7 @@ Built with React and Vite, and fully deployable to AWS using Terraform.
 ## Local Development
 
 ### Prerequisites
-- Node.js (v18+ recommended)
+- Node.js
 - A [Strava API Application](https://www.strava.com/settings/api)
 
 ### Setup Instructions

@@ -131,7 +131,7 @@ resource "aws_lambda_function" "oauth_callback" {
   function_name    = "strava-wrapped-oauth-callback"
   role             = aws_iam_role.lambda_exec.arn
   handler          = "callback.handler"
-  runtime          = "nodejs20.x"
+  runtime          = "nodejs22.x"
   filename         = data.archive_file.lambda.output_path
   source_code_hash = data.archive_file.lambda.output_base64sha256
   timeout          = 10
