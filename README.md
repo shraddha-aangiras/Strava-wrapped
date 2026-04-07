@@ -1,5 +1,8 @@
 # Strava Wrapped
 
+[View Live Version](https://stravawrapped.aangiras.com/)
+
+Too broke for Strava Permium but want to flex? (Same)
 A personalized year-in-review dashboard for your Strava activities. View your top sports, longest activities, and total active hours for any given year. 
 
 Built with React and Vite, and fully deployable to AWS using Terraform.
@@ -21,7 +24,7 @@ Built with React and Vite, and fully deployable to AWS using Terraform.
 ## Local Development
 
 ### Prerequisites
-- [Node.js](https://nodejs.org/) (v18+ recommended)
+- Node.js (v18+ recommended)
 - A [Strava API Application](https://www.strava.com/settings/api)
 
 ### Setup Instructions
@@ -71,7 +74,16 @@ Built with React and Vite, and fully deployable to AWS using Terraform.
 
 This project uses Terraform to provision an AWS S3 bucket for static hosting, an API Gateway, and a Lambda function for the OAuth callback.
 
-1. **Deploy Infrastructure:** Navigate to `infra/`, run `terraform init` (if it's your first time), and then `terraform apply`.
-2. **Deploy Application:** Run `./scripts/deploy.sh` from the root directory. This script reads the Terraform outputs, builds the Vite frontend, injects the live AWS callback URL, and syncs the static files to S3.
+Deployments are automated using GitHub Actions. Pushing code to the `main` branch triggers a workflow that:
+1. Applies any infrastructure changes via Terraform.
+2. Builds the Vite frontend and injects the live AWS callback URL.
+3. Syncs the compiled static files to the S3 bucket.
 
-*Made with ♥ using the Strava API.*
+To enable the automated deployment pipeline, configure the following secrets in your GitHub repository:
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`
+- `STRAVA_CLIENT_ID`
+- `STRAVA_CLIENT_SECRET`
+- `DOMAIN_NAME`
+
+*Made with love using the Strava API.*
